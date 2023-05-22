@@ -10,7 +10,19 @@ Icon URI:
 */
 class MainWPExtension
 {
-  
+	/**
+	 * Protected variable containg information about the Extension status.
+	 *
+	 * @var bool
+	 */
+	protected $childEnabled = false;
+
+	/**
+	 * Protected variable containg the Extension key.
+	 *
+	 * @var bool|string
+	 */
+	protected $childKey = false;
     public function __construct()
 	{		
 		add_filter('mainwp_getsubpages_sites', array(&$this, 'managesites_subpage' ), 10, 1 );
@@ -26,6 +38,10 @@ class MainWPExtension
 		 *
 		 * @link https://codex.mainwp.com/#mainwp-getmetaboxes
 		 */
+	    
+    		$this->childEnabled        = apply_filters( 'mainwp_extension_enabled_check', __FILE__ ); // If the plugin is not enabled this will return false, if the plugin is enabled, an array will be returned containing a key
+		$this->childKey            = $this->childEnabled['key']; // Handle key of child.
+
 		add_filter( 'mainwp_getmetaboxes', array( &$this, 'get_metaboxes' ) );
 	}
 
@@ -43,7 +59,7 @@ class MainWPExtension
 		if ( isset( $_GET['page'] ) && 'managesites' == $_GET['page'] ) {
 			$metaboxes[] = array(
 				'plugin'        => 'test',
-				'key'           => 'testkey',
+				'key'           => $this->childKey,
 				'metabox_title' => 'Woocommerce1',
 				'callback'      => array( 'MainWPExtension', 'render_woocommerce_shortcuts_widget' ),
 			);
