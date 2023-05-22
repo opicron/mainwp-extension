@@ -36,6 +36,9 @@ class MainWPExtension
     public static function renderPage() {
         global $mainWPExampleExtensionActivator;
 
+	//add_action( 'mainwp-pageheader-sites', array( self::get_class_name(), 'render_header' ) ); // @deprecated Use 'mainwp_pageheader_sites' instead.
+	add_action( 'mainwp_pageheader_sites', array( self::get_class_name(), 'render_header' ) );
+
 	//render_header();
 	//render_footer()
         // Fetch all child-sites 
