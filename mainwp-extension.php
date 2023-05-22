@@ -57,7 +57,7 @@ class MainWPExtension
 			</div>
 			<div class="four wide column right aligned"></div>
 		</div>
-		<?
+		<?php
 	}
 	
 	function managesites_subpage( $subPage ) {		
