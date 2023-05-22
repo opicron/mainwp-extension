@@ -72,10 +72,10 @@ class MainWPExtension
 	 * Render the extension metabox (widget) HTML content.
 	 */
 	public static function render_woocommerce_shortcuts_widget() {
-		$website_id = isset( $_GET['dashboard'] ) ? $_GET['dashboard'] : 0;
-		if ( empty( $website_id ) ) {
-			return;
-		}
+		//$website_id = isset( $_GET['dashboard'] ) ? $_GET['dashboard'] : 0;
+		//if ( empty( $website_id ) ) {
+		//	return;
+		//}
 		?>
 		<div class="ui grid">
 			<div class="twelve wide column">
