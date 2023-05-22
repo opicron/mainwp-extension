@@ -14,6 +14,19 @@ class MainWPExtension
     public function __construct()
 	{		
 		add_filter('mainwp_getsubpages_sites', array(&$this, 'managesites_subpage' ), 10, 1 );
+	    
+	    	/**
+		 * Check whether current user has capability or role to access the extension.
+		 */
+		//if ( function_exists( 'mainwp_current_user_can' ) && ! mainwp_current_user_can( 'extension', 'mainwp-woocommerce-shortcuts-extension' ) ) {
+		//	return;
+		//}
+		/**
+		 * This hook allows you to add metabox-widgets on the main dashboard via the 'mainwp-getmetaboxes' filter.
+		 *
+		 * @link https://codex.mainwp.com/#mainwp-getmetaboxes
+		 */
+		add_filter( 'mainwp_getmetaboxes', array( &$this, 'get_metaboxes' ) );
 	}
 
 	/**
