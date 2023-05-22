@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: MainWP Hello World! Extension
+Plugin Name: MainWP Exension
 Plugin URI: https://mainwp.com
 Description: MainWP Hello World! Extension is a MainWP example extension
 Version: 1.0
@@ -8,7 +8,7 @@ Author: MainWP
 Author URI: https://mainwp.com
 Icon URI: 
 */
-class MainWPExampleExtension
+class MainWPExtension
 {
   
     public function __construct()
@@ -23,7 +23,7 @@ class MainWPExampleExtension
 			'slug'                     => 'ExampleExtension',
 			'sitetab'             => true,
 			'menu_hidden'     => true,
-			'callback'             => array( 'MainWPExampleExtension', 'renderPage' ),
+			'callback'             => array( 'MainWPExtension', 'renderPage' ),
 		);
 
 		return $subPage;
@@ -141,7 +141,7 @@ class MainWPExampleExtension
 * Activator Class is used for extension activation and deactivation
 */
 
-class MainWPExampleExtensionActivator
+class MainWPExtensionActivator
 {
     protected $mainwpMainActivated = false;
     protected $childEnabled = false;
@@ -184,7 +184,7 @@ class MainWPExampleExtensionActivator
         do_action('mainwp-pageheader-extensions', __FILE__);
         if ($this->childEnabled)
         {
-            MainWPExampleExtension::renderPage();
+            MainWPExtension::renderPage();
         }
         else
         {
@@ -206,7 +206,7 @@ class MainWPExampleExtensionActivator
 
         $this->childKey = $this->childEnabled['key'];
 		
-		new MainWPExampleExtension();
+		new MainWPExtension();
 
     }
 
@@ -231,4 +231,4 @@ class MainWPExampleExtensionActivator
 }
 
 global $mainWPExampleExtensionActivator;
-$mainWPExampleExtensionActivator = new MainWPExampleExtensionActivator();
+$mainWPExampleExtensionActivator = new MainWPExtensionActivator();
