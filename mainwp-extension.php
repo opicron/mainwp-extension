@@ -29,6 +29,12 @@ class MainWPExtension
 		return $subPage;
 	}
 
+	public static function render_header( $shownPage = '' ) {
+		MainWP_Deprecated_Hooks::maybe_handle_deprecated_hook();
+		MainWP_Manage_Sites_View::render_header( $shownPage, self::$subPages );
+	}
+	
+	
     /*
     * Create your extension page
     */
