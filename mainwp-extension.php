@@ -36,6 +36,8 @@ class MainWPExtension
     public static function renderPage() {
         global $mainWPExampleExtensionActivator;
 
+	render_header();
+	//render_footer()
         // Fetch all child-sites 
         $websites = apply_filters('mainwp-getsites', $mainWPExampleExtensionActivator->getChildFile(), $mainWPExampleExtensionActivator->getChildKey(), null);              
         
