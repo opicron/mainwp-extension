@@ -13,7 +13,7 @@ class MainWPExtension
   
     public function __construct()
 	{		
-		add_filter('mainwp-getsubpages-sites', array(&$this, 'managesites_subpage' ), 10, 1 );
+		add_filter('mainwp_getsubpages_sites', array(&$this, 'managesites_subpage' ), 10, 1 );
 	}
 
 	function managesites_subpage( $subPage ) {		
