@@ -29,9 +29,9 @@ class MainWPExtension
 		}
 		if ( isset( $_GET['page'] ) && 'managesites' == $_GET['page'] ) {
 			$metaboxes[] = array(
-				'plugin'        => $this->childFile,
-				'key'           => $this->childKey,
-				'metabox_title' => MainWP_WooCommerce_Shortcuts::get_name(),
+				'plugin'        => 'test',
+				'key'           => 'testkey',
+				'metabox_title' => 'Woocommerce1',
 				'callback'      => array( 'MainWPExtension', 'render_woocommerce_shortcuts_widget' ),
 			);
 		}
