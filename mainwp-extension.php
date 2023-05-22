@@ -16,6 +16,50 @@ class MainWPExtension
 		add_filter('mainwp_getsubpages_sites', array(&$this, 'managesites_subpage' ), 10, 1 );
 	}
 
+	/**
+	 * Adds metabox (widget) on the MainWP Dashboard overview page via the 'mainwp_getmetaboxes' filter.
+	 *
+	 * @param array $metaboxes Array containing metaboxes data.
+	 *
+	 * @return array $metaboxes Updated array that contains metaboxes data.
+	 */
+	public function get_metaboxes( $metaboxes ) {
+		if ( ! is_array( $metaboxes ) ) {
+			$metaboxes = array();
+		}
+		if ( isset( $_GET['page'] ) && 'managesites' == $_GET['page'] ) {
+			$metaboxes[] = array(
+				'plugin'        => $this->childFile,
+				'key'           => $this->childKey,
+				'metabox_title' => MainWP_WooCommerce_Shortcuts::get_name(),
+				'callback'      => array( 'MainWPExtension', 'render_woocommerce_shortcuts_widget' ),
+			);
+		}
+
+		return $metaboxes;
+	}
+	
+	/**
+	 * Render the extension metabox (widget) HTML content.
+	 */
+	public static function render_woocommerce_shortcuts_widget() {
+		$website_id = isset( $_GET['dashboard'] ) ? $_GET['dashboard'] : 0;
+		if ( empty( $website_id ) ) {
+			return;
+		}
+		?>
+		<div class="ui grid">
+			<div class="twelve wide column">
+				<h3 class="ui header handle-drag">
+					Test
+					<div class="sub header">Woocommerce</div>
+				</h3>
+			</div>
+			<div class="four wide column right aligned"></div>
+		</div>
+		<?
+	}
+	
 	function managesites_subpage( $subPage ) {		
 
 		$subPage[] = array(
