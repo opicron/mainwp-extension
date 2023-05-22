@@ -29,11 +29,12 @@ class MainWPExtension
 		return $subPage;
 	}
 
+	/*
 	public static function render_header( $shownPage = '' ) {
 		MainWP_Deprecated_Hooks::maybe_handle_deprecated_hook();
 		MainWP_Manage_Sites_View::render_header( $shownPage, self::$subPages );
 	}
-	
+	*/
 	
     /*
     * Create your extension page
@@ -43,7 +44,7 @@ class MainWPExtension
         global $mainWPExampleExtensionActivator;
 
 	//add_action( 'mainwp-pageheader-sites', array( self::get_class_name(), 'render_header' ) ); // @deprecated Use 'mainwp_pageheader_sites' instead.
-	add_action( 'mainwp_pageheader_sites', array( self::get_class_name(), 'render_header' ) );
+	//add_action( 'mainwp_pageheader_sites', array( self::get_class_name(), 'render_header' ) );
 
 	//render_header();
 	//render_footer()
